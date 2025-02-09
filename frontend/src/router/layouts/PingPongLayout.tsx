@@ -146,7 +146,7 @@ export const PingPongLayout: React.FC = () => {
               }
               clearInterval(intervalRef.current);
           };
-    }, [AccessToken]);
+    }, []);
 
   useEffect(() => {
     if (!gameId)

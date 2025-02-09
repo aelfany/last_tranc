@@ -357,7 +357,6 @@ class PongConsumer(AsyncWebsocketConsumer):
                     'game_state': game_states
                 }))
 
-            print("/////////////////////////////")
         except Exception as e:
             print(f"Unexpected error in connect: {str(e)}")
             await self.close()
@@ -428,7 +427,6 @@ class PongConsumer(AsyncWebsocketConsumer):
                 await sync_to_async(Game.objects.filter(room=self.room_name).update)(
                     game_state=game_state, winner=winner, loser=loser
                 )
-            print(f"WebSocket disconnected with code: {close_code}")
 
             if self.ball_update_task and not self.ball_update_task.done():
                 self.ball_update_task.cancel()
@@ -452,7 +450,6 @@ class PongConsumer(AsyncWebsocketConsumer):
                     }
                 }
             )
-            print("====================================")
         except Exception as e:
             print(f"Error in disconnect: {str(e)}")
             
