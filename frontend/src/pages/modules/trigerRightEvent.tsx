@@ -2,6 +2,7 @@ import { store } from "@/src/states/store";
 import {
   setAllUsersData,
   setConversationsData,
+  setFriendRequestsData,
   setFriendsData,
   setNotificationsData,
 } from "./setAuthenticationData";
@@ -76,6 +77,7 @@ export const trigerRightEvent = (json_data: SocketJsonValueType) => {
           type: "friend_request",
         },
       ]);
+      setFriendRequestsData([...store.getState().friendRequests.value, {user: json_data.sender, type: "received"}])
       launchToast(
         json_data,
         async () => {
