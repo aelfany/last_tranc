@@ -3,7 +3,7 @@ import { useGameLoop } from './components/PingPongLocal/useGameLoop';
 import { drawGame } from './components/PingPongLocal/gameRenderer';
 import { updateGameState } from './components/PingPongLocal/gameLogic';
 import { GameState, INITIAL_GAME_STATE, CANVAS_WIDTH, CANVAS_HEIGHT } from './components/PingPongLocal/gameTypes';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export const Pong: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -13,7 +13,7 @@ export const Pong: React.FC = () => {
   const [gameMode, setGameMode] = useState<'local' | 'remote' | null>(null);
   const isTrue = useRef<boolean>(false);
   const isRemote = useRef<boolean>(false);
-    const navigate = useNavigate();
+  // const navigate = useNavigate();
   
 
 
@@ -23,13 +23,13 @@ export const Pong: React.FC = () => {
     setShowModeSelection(false);
   };
   
-  const handleRemoteGame = () => {
-    setGameMode('remote');
-    isTrue.current = true;
-    isRemote.current = true;
-    setShowModeSelection(false);
-    navigate('/PongMatchmaking');
-  };
+  // const handleRemoteGame = () => {
+  //   setGameMode('remote');
+  //   isTrue.current = true;
+  //   isRemote.current = true;
+  //   setShowModeSelection(false);
+  //   navigate('/PongMatchmaking');
+  // };
   
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -125,19 +125,13 @@ return (
     {showModeSelection && (
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="bg-[#1a103f]/90 p-8 rounded-lg border-2 border-[#ff3366] shadow-lg">
-          <h2 className="text-white text-2xl font-bold text-center mb-6">Choose Game Mode</h2>
+          <h2 className="text-white text-2xl font-bold text-center mb-6">Play Local Game</h2>
           <div className="flex flex-col gap-4">
             <button 
               onClick={handleLocalGame}
               className="px-8 py-3 bg-[#ff3366] text-white rounded-lg hover:bg-[#ff3366]/80 transition-colors duration-200 font-semibold"
             >
               Local Game
-            </button>
-            <button 
-              onClick={handleRemoteGame}
-              className="px-8 py-3 bg-[#7C5577] text-white rounded-lg hover:bg-[#7C5577]/80 transition-colors duration-200 font-semibold"
-            >
-              Remote Game
             </button>
           </div>
         </div>

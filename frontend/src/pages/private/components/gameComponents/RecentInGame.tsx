@@ -107,36 +107,41 @@ const RecentInGame = () => {
             ))}
           {recentGames &&
             recentGames?.map((match, index) => (
-              <div key={index} className={gameRecentInGameImageAndName}>
-                <>
-                  <NameAndImageIcon
-                    player={
-                      match.player1.name === match.player1.winner
-                        ? match.player1
-                        : match.player2
-                    }
-                    isWinner={true}
-                  />
-                  <div className={`vs-container ${match.player1.name === "" ? "invisible" : ""}`}>
-                    <img
-                      src={
-                        match.player1.type === "pong"
-                          ? PingPongLogoIcon
-                          : rocketLeageLogoIcon
+              index < 10  ? 
+              (<>
+                <div key={index} className={gameRecentInGameImageAndName}>
+                  <>
+                    <NameAndImageIcon
+                      player={
+                        match.player1.name === match.player1.winner
+                          ? match.player1
+                          : match.player2
                       }
-                      alt=""
+                      isWinner={true}
                     />
-                  </div>
-                  <NameAndImageIcon
-                    player={
-                      match.player1.name === match.player1.loser
-                        ? match.player1
-                        : match.player2
-                    }
-                    isWinner={false}
-                  />
-                </>
-              </div>
+                    <div className={`vs-container ${match.player1.name === "" ? "invisible" : ""}`}>
+                      <img
+                        src={
+                          match.player1.type === "pong"
+                            ? PingPongLogoIcon
+                            : rocketLeageLogoIcon
+                        }
+                        alt=""
+                      />
+                    </div>
+                    <NameAndImageIcon
+                      player={
+                        match.player1.name === match.player1.loser
+                          ? match.player1
+                          : match.player2
+                      }
+                      isWinner={false}
+                    />
+                  </>
+                </div>
+              </>)
+              :
+              <></>
             ))}
         </div>
       </div>
